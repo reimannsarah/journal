@@ -14,11 +14,17 @@ export function handleEntryForm(e) {
   let pTitle = document.createElement("p");
   let pBody = document.createElement("p");
   let pWordCount = document.createElement("p");
+  let pVowels = document.createElement("p");
+  let pConsonants = document.createElement("p");
+  let pTeaser = document.createElement("p");
   pTitle.innerText = entry.title;
   pBody.innerText = entry.body;  
   journal.addEntry(entry);
-  pWordCount.innerText = entry.countWords();
-  div.append(pTitle, pBody, pWordCount);
+  pWordCount.innerText = `Words: ${entry.countWords()}`;  
+  pVowels.innerText = `Vowels: ${entry.countVowels()}`;
+  pConsonants.innerText = `Consonants: ${entry.countConsonants()}`;
+  pTeaser.innerText = `Teaser: ${entry.getTeaser()}`;
+  div.append(pTitle, pBody, pWordCount, pVowels, pConsonants, pTeaser);
 }
 
 document.getElementById("submitEntry").addEventListener("click", handleEntryForm);
